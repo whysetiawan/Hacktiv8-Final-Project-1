@@ -9,6 +9,7 @@ import (
 type TodoRepository interface {
 	CreateTodo(todo models.TodoModel) (models.TodoModel, error)
 	DeleteTodo(todo models.TodoModel) (models.TodoModel, error)
+	UpdateTodo(data models.TodoModel, id int64) (models.TodoModel, error)
 }
 
 type todoRepository struct {
@@ -33,4 +34,15 @@ func (r *todoRepository) DeleteTodo(todo models.TodoModel) (models.TodoModel, er
 		return todo, err
 	}
 	return todo, nil
+}
+
+func (r *todoRepository) UpdateTodo(data models.TodoModel, id int64) (models.TodoModel, error) {
+	err := r.db.Model(&data).Where("todo_id", id).Updates(models.TodoModel{
+		Status: true,
+	})
+	if err != nil {
+		return data, err.Error
+	}
+
+	return data, nil
 }
