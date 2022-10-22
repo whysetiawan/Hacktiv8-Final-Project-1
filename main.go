@@ -9,8 +9,6 @@ import (
 	"final-project-1/httpserver/services"
 	"log"
 
-	_ "final-project-1/docs"
-
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv" // swagger embed files
 	swaggerfiles "github.com/swaggo/files"
