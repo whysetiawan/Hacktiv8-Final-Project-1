@@ -11,3 +11,9 @@ func NewHttpError(message interface{}, trace interface{}) HttpError {
 		Trace:   trace,
 	}
 }
+
+type ResponseData struct {
+	Status  interface{}       `json:"status,omitempty"`
+	Message map[string]string `json:"message,omitempty"`
+	Details interface{}
+}

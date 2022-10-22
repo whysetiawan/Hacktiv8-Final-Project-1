@@ -1,7 +1,6 @@
 package config
 
 import (
-	"final-project-1/httpserver/models"
 	"fmt"
 	"os"
 
@@ -20,6 +19,6 @@ func Connect() (*gorm.DB, error) {
 	if err != nil {
 		panic(err)
 	}
-	db.AutoMigrate(&models.TodoModel{})
+	// db.AutoMigrate(&models.TodoModel{})
 	return db, err
 }
