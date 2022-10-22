@@ -7,7 +7,7 @@ type Tabler interface {
 }
 
 type TodoModel struct {
-	TodoId    uint      `gorm:"primaryKey" json:"order_id"`
+	TodoId    uint      `gorm:"primaryKey" json:"todo_id"`
 	Name      string    `json:"name"`
 	Status    bool      `json:"status"`
 	CreatedAt time.Time `json:"created_at"`
