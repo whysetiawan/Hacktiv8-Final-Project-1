@@ -44,9 +44,9 @@ func main() {
 
 	docs.SwaggerInfo.Title = "Hacktiv8 Final-Project-1 API"
 	docs.SwaggerInfo.Description = "This is just a simple TODO List"
-	docs.SwaggerInfo.Host = "https://hacktiv8-final-project-1-production.up.railway.app"
+	docs.SwaggerInfo.Host = "hacktiv8-final-project-1-production.up.railway.app"
 	docs.SwaggerInfo.BasePath = "/api"
-	docs.SwaggerInfo.Schemes = []string{"https"}
+	docs.SwaggerInfo.Schemes = []string{"https", "http"}
 
 	app.GET("/docs/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
 
