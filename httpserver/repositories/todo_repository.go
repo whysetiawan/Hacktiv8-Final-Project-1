@@ -8,6 +8,7 @@ import (
 
 type TodoRepository interface {
 	CreateTodo(todo models.TodoModel) (models.TodoModel, error)
+	DeleteTodo(todo models.TodoModel) (models.TodoModel, error)
 }
 
 type todoRepository struct {
@@ -20,6 +21,14 @@ func NewTodoRepository(db *gorm.DB) *todoRepository {
 
 func (r *todoRepository) CreateTodo(todo models.TodoModel) (models.TodoModel, error) {
 	err := r.db.Create(&todo).Error
+	if err != nil {
+		return todo, err
+	}
+	return todo, nil
+}
+
+func (r *todoRepository) DeleteTodo(todo models.TodoModel) (models.TodoModel, error) {
+	err := r.db.Delete(&todo).Error
 	if err != nil {
 		return todo, err
 	}

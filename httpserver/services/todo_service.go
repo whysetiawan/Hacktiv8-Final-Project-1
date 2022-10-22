@@ -9,7 +9,7 @@ import (
 
 type TodoService interface {
 	CreateTodo(dto dto.CreateTodoDto) (models.TodoModel, error)
-	DeleteTodo()
+	DeleteTodo(id uint) error
 }
 
 type todoService struct {
@@ -35,4 +35,11 @@ func (s *todoService) CreateTodo(dto dto.CreateTodoDto) (models.TodoModel, error
 	return todo, nil
 }
 
-func (service *todoService) DeleteTodo() {}
+func (s *todoService) DeleteTodo(id uint) error {
+	todo := models.TodoModel{
+		TodoId: id,
+	}
+	todo, err := s.todoRepository.DeleteTodo(todo)
+
+	return err
+}
