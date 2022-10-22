@@ -11,6 +11,7 @@ func TodoRouter(route *gin.RouterGroup, todoController controllers.TodoControlle
 	{
 		todoRouter.POST("", todoController.CreateTodo)
 		todoRouter.DELETE(":id", todoController.DeleteTodo)
+		todoRouter.PUT("/update/:id", todoController.UpdateTodo)
 	}
 	return todoRouter
 }
