@@ -86,7 +86,7 @@ func (c *todoController) DeleteTodo(ctx *gin.Context) {
 // @Success 200 {object} utils.HttpSuccess[models.TodoModel]
 // @Failure 400 {object} utils.HttpError
 // @Failure 500 {object} utils.HttpError
-// @Router  /todo/update/{id} [update]
+// @Router  /todo/update/{id} [put]
 func (c *todoController) UpdateTodo(ctx *gin.Context) {
 	respData := &utils.ResponseData{
 		Status: "Fail",
