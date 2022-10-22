@@ -79,6 +79,14 @@ func (c *todoController) DeleteTodo(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, utils.NewHttpSuccess[any]("Todo Deleted", nil))
 }
 
+// UpdateTodo godoc
+// @Tags    Todo
+// @Summary update a todo
+// @Param   id  path     int true "Todo ID"
+// @Success 200 {object} utils.HttpSuccess[models.TodoModel]
+// @Failure 400 {object} utils.HttpError
+// @Failure 500 {object} utils.HttpError
+// @Router  /todo/update/{id} [update]
 func (c *todoController) UpdateTodo(ctx *gin.Context) {
 	respData := &utils.ResponseData{
 		Status: "Fail",
