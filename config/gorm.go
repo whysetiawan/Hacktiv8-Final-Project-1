@@ -2,6 +2,8 @@ package config
 
 import (
 	"final-project-1/httpserver/models"
+	"fmt"
+	"os"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -9,9 +11,9 @@ import (
 )
 
 func Connect() (*gorm.DB, error) {
-	dsn := "host=localhost user=user password=postgres dbname=final_project port=5432 sslmode=disable TimeZone=Asia/Jakarta"
+	dbCredential := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable TimeZone=Asia/Jakarta", os.Getenv("DB_HOST"), os.Getenv("DB_USERNAME"), os.Getenv("DB_PASSWORD"), os.Getenv("DB_NAME"), os.Getenv("DB_PORT"))
 
-	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
+	db, err := gorm.Open(postgres.Open(dbCredential), &gorm.Config{
 		Logger: logger.Default.LogMode(logger.Info),
 	})
 
