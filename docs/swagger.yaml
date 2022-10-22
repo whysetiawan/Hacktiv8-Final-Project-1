@@ -23,6 +23,11 @@ definitions:
       message: {}
       stack_trace: {}
     type: object
+  utils.HttpSuccess-any:
+    properties:
+      data: {}
+      message: {}
+    type: object
   utils.HttpSuccess-models_TodoModel:
     properties:
       data:
@@ -44,18 +49,19 @@ info:
   version: "1.0"
 paths:
   /todo:
-    delete:
+    post:
       parameters:
-      - description: Todo ID
-        in: path
-        name: id
+      - description: Create Todo DTO
+        in: body
+        name: todo
         required: true
-        type: integer
+        schema:
+          $ref: '#/definitions/dto.CreateTodoDto'
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/utils.HttpSuccess-models_TodoModel'
+            $ref: '#/definitions/utils.HttpSuccess-any'
         "400":
           description: Bad Request
           schema:
@@ -67,14 +73,14 @@ paths:
       summary: create a todo
       tags:
       - Todo
-    post:
+  /todo/{id}:
+    delete:
       parameters:
-      - description: Create Todo DTO
-        in: body
-        name: todo
+      - description: Todo ID
+        in: path
+        name: id
         required: true
-        schema:
-          $ref: '#/definitions/dto.CreateTodoDto'
+        type: integer
       responses:
         "200":
           description: OK

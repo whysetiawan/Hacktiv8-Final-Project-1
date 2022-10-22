@@ -5,6 +5,7 @@ import (
 	"final-project-1/httpserver/services"
 	"final-project-1/utils"
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
@@ -28,7 +29,7 @@ func NewTodoController(todoService services.TodoService) *todoController {
 // @Tags    Todo
 // @Summary create a todo
 // @Param   todo body     dto.CreateTodoDto true "Create Todo DTO"
-// @Success 200  {object} utils.HttpSuccess[models.TodoModel]
+// @Success 200  {object} utils.HttpSuccess[any]
 // @Failure 400  {object} utils.HttpError
 // @Failure 500  {object} utils.HttpError
 // @Router  /todo [post]
@@ -57,5 +58,22 @@ func (c *todoController) CreateTodo(ctx *gin.Context) {
 // @Success 200 {object} utils.HttpSuccess[models.TodoModel]
 // @Failure 400 {object} utils.HttpError
 // @Failure 500 {object} utils.HttpError
-// @Router  /todo [delete]
-func (c *todoController) DeleteTodo(ctx *gin.Context) {}
+// @Router  /todo/{id} [delete]
+func (c *todoController) DeleteTodo(ctx *gin.Context) {
+	idDto := ctx.Param("id")
+	id, err := strconv.Atoi(idDto)
+
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, utils.NewHttpError("Bad Request", err.Error()))
+		return
+	}
+
+	err = c.todoService.DeleteTodo(uint(id))
+
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, utils.NewHttpError("Internal Server Error", err.Error()))
+		return
+	}
+
+	ctx.JSON(http.StatusOK, utils.NewHttpSuccess[any]("Todo Deleted", nil))
+}
