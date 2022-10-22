@@ -39,7 +39,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/utils.HttpSuccess-models_TodoModel"
+                            "$ref": "#/definitions/utils.HttpSuccess-any"
                         }
                     },
                     "400": {
@@ -55,7 +55,9 @@
                         }
                     }
                 }
-            },
+            }
+        },
+        "/todo/{id}": {
             "delete": {
                 "tags": [
                     "Todo"
@@ -127,6 +129,13 @@
             "properties": {
                 "message": {},
                 "stack_trace": {}
+            }
+        },
+        "utils.HttpSuccess-any": {
+            "type": "object",
+            "properties": {
+                "data": {},
+                "message": {}
             }
         },
         "utils.HttpSuccess-models_TodoModel": {
