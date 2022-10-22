@@ -1,7 +1,9 @@
 package main
 
 import (
+	"final-project-1/config"
 	"final-project-1/httpserver/controllers"
+	"final-project-1/httpserver/repositories"
 	"final-project-1/httpserver/routers"
 	"final-project-1/httpserver/services"
 
@@ -10,8 +12,10 @@ import (
 
 func main() {
 	app := gin.Default()
+	db, _ := config.Connect()
 
-	todoService := services.NewTodoService()
+	todoRepository := repositories.NewTodoRepository(db)
+	todoService := services.NewTodoService(todoRepository)
 	todoController := controllers.NewTodoController(todoService)
 
 	routers.TodoRouter(app, todoController)
