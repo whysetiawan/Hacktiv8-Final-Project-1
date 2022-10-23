@@ -7,11 +7,8 @@ import (
 )
 
 type TodoRepository interface {
-<<<<<<< Updated upstream
-=======
 	GetAllTodos() (models.TodoModel, error)
 	GetTodosByID(id uint) (models.TodoModel, error)
->>>>>>> Stashed changes
 	CreateTodo(todo models.TodoModel) (models.TodoModel, error)
 	DeleteTodo(todo models.TodoModel) (models.TodoModel, error)
 	UpdateTodo(data models.TodoModel, id int64) (models.TodoModel, error)
