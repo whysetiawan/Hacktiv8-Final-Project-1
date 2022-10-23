@@ -11,6 +11,11 @@ import (
 )
 
 type TodoController interface {
+<<<<<<< Updated upstream
+=======
+	GetAllTodos(ctx *gin.Context)
+	GetTodoByID(ctx *gin.Context)
+>>>>>>> Stashed changes
 	CreateTodo(ctx *gin.Context)
 	DeleteTodo(ctx *gin.Context)
 	UpdateTodo(ctx *gin.Context)
@@ -26,6 +31,52 @@ func NewTodoController(todoService services.TodoService) *todoController {
 	}
 }
 
+<<<<<<< Updated upstream
+=======
+// GetAllTodos godoc
+// @Tags Todo
+// @summary Get All Todos
+// @Success 200 {object} utils.HttpSuccess[models.TodoModel]
+// @Failure 400 {object} httputil.HTTPError
+// @Failure 404 {object} httputil.HTTPError
+// @Failure 500 {object} httputil.HTTPError
+// @Router /todos [get]
+func (c *todoController) GetAllTodos(ctx *gin.Context) {
+	todo, err := c.todoService.GetAllTodos()
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, utils.NewHttpError("Bad Request", err.Error()))
+		return
+	}
+
+	ctx.JSON(http.StatusOK, utils.NewHttpSuccess("", todo))
+}
+
+// GetTodoByID godoc
+// @Tags Todo
+// @summary Get Todo By ID
+// @Param   id  path     int true "Todo ID"
+// @Success 200 {object} utils.HttpSuccess[models.TodoModel]
+// @Failure 400 {object} httputil.HTTPError
+// @Failure 404 {object} httputil.HTTPError
+// @Failure 500 {object} httputil.HTTPError
+// @Router /todos [get]
+func (c *todoController) GetTodoByID(ctx *gin.Context) {
+	idd := ctx.Param("id")
+	id, err := strconv.Atoi(idd)
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, utils.NewHttpError("Bad Request", err.Error()))
+		return
+	}
+
+	todo, err := c.todoService.GetTodosByID(uint(id))
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, utils.NewHttpError("Internal Server Error", err.Error()))
+		return
+	}
+	ctx.JSON(http.StatusOK, utils.NewHttpSuccess("Todo Get By ID", todo))
+}
+
+>>>>>>> Stashed changes
 // CreateTodo godoc
 // @Tags    Todo
 // @Summary create a todo

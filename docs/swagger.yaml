@@ -47,6 +47,33 @@ info:
     url: http://www.apache.org/licenses/LICENSE-2.0.html
 paths:
   /todo:
+<<<<<<< Updated upstream
+=======
+  get:
+      description: Get All ToDo's
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.HttpSuccess-models_TodoModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.HttpError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.HttpError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.HttpError'
+      summary: Get ToDo
+      tags:
+      - Todo
+>>>>>>> Stashed changes
     post:
       parameters:
       - description: Create Todo DTO
@@ -72,6 +99,40 @@ paths:
       tags:
       - Todo
   /todo/{id}:
+<<<<<<< Updated upstream
+=======
+  get:
+      consumes:
+      - application/json
+      description: Get toDo
+      parameters:
+      - description: Todo ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.HttpSuccess-models_TodoModel'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.HttpError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.HttpError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.HttpError'
+      tags:
+      - Todo
+>>>>>>> Stashed changes
     delete:
       parameters:
       - description: Todo ID

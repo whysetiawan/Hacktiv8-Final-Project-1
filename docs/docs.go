@@ -25,6 +25,41 @@ const docTemplate = `{
     "basePath": "{{.BasePath}}",
     "paths": {
         "/todo": {
+<<<<<<< Updated upstream
+=======
+            "get": {
+                "tags": [
+                    "Todo"
+                ],
+                "summary": "Get All Todos",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/utils.HttpSuccess-models_TodoModel"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/utils.HttpError"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/utils.HttpError"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/utils.HttpError"
+                        }
+                    }
+                }
+            },
+>>>>>>> Stashed changes
             "post": {
                 "tags": [
                     "Todo"
