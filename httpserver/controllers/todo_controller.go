@@ -63,7 +63,7 @@ func (c *todoController) GetTodoByID(ctx *gin.Context) {
 		return
 	}
 
-	todo, err := c.todoService.GetTodosByID(uint(id))
+	todo, err := c.todoService.GetTodoByID(uint(id))
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, utils.NewHttpError("Internal Server Error", err.Error()))
 		return
