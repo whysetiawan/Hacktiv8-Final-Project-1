@@ -11,11 +11,8 @@ import (
 )
 
 type TodoController interface {
-<<<<<<< Updated upstream
-=======
 	GetAllTodos(ctx *gin.Context)
 	GetTodoByID(ctx *gin.Context)
->>>>>>> Stashed changes
 	CreateTodo(ctx *gin.Context)
 	DeleteTodo(ctx *gin.Context)
 	UpdateTodo(ctx *gin.Context)
@@ -31,8 +28,6 @@ func NewTodoController(todoService services.TodoService) *todoController {
 	}
 }
 
-<<<<<<< Updated upstream
-=======
 // GetAllTodos godoc
 // @Tags Todo
 // @summary Get All Todos
@@ -76,7 +71,6 @@ func (c *todoController) GetTodoByID(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, utils.NewHttpSuccess("Todo Get By ID", todo))
 }
 
->>>>>>> Stashed changes
 // CreateTodo godoc
 // @Tags    Todo
 // @Summary create a todo

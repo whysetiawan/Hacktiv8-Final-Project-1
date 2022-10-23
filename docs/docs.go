@@ -25,8 +25,6 @@ const docTemplate = `{
     "basePath": "{{.BasePath}}",
     "paths": {
         "/todo": {
-<<<<<<< Updated upstream
-=======
             "get": {
                 "tags": [
                     "Todo"
@@ -59,7 +57,6 @@ const docTemplate = `{
                     }
                 }
             },
->>>>>>> Stashed changes
             "post": {
                 "tags": [
                     "Todo"

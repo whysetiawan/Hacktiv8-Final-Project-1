@@ -25,8 +25,6 @@ func NewTodoRepository(db *gorm.DB) *todoRepository {
 	return &todoRepository{db}
 }
 
-<<<<<<< Updated upstream
-=======
 func (r *todoRepository) GetAllTodos() (models.TodoModel, error)  {
 	var todo models.TodoModel
 	err := r.db.Find(&todo).Error
@@ -49,7 +47,6 @@ func (r *todoRepository) GetTodosByID(id uint) (models.TodoModel, error)  {
 
 }
 
->>>>>>> Stashed changes
 func (r *todoRepository) CreateTodo(todo models.TodoModel) (models.TodoModel, error) {
 	err := r.db.Create(&todo).Error
 	if err != nil {

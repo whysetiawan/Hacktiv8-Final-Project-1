@@ -47,8 +47,6 @@ info:
     url: http://www.apache.org/licenses/LICENSE-2.0.html
 paths:
   /todo:
-<<<<<<< Updated upstream
-=======
   get:
       description: Get All ToDo's
       produces:
@@ -73,7 +71,6 @@ paths:
       summary: Get ToDo
       tags:
       - Todo
->>>>>>> Stashed changes
     post:
       parameters:
       - description: Create Todo DTO
@@ -99,8 +96,6 @@ paths:
       tags:
       - Todo
   /todo/{id}:
-<<<<<<< Updated upstream
-=======
   get:
       consumes:
       - application/json
@@ -132,7 +127,6 @@ paths:
             $ref: '#/definitions/utils.HttpError'
       tags:
       - Todo
->>>>>>> Stashed changes
     delete:
       parameters:
       - description: Todo ID

@@ -15,8 +15,6 @@
     "basePath": "/api",
     "paths": {
         "/todo": {
-<<<<<<< Updated upstream
-=======
             "get": {
                 "description": "Get All ToDo's",
                 "produces": [
@@ -130,8 +128,6 @@
             }
         },
         "/todo/{id}": {
-<<<<<<< Updated upstream
-=======
             "get": {
                 "description": "Get toDo",
                 "consumes": [
@@ -179,7 +175,6 @@
                     }
                 }
             },
->>>>>>> Stashed changes
             "delete": {
                 "tags": [
                     "Todo"
